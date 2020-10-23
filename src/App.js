@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { createElement } from "./utils/elements";
 import createHouseCard from "./components/House";
 import { getAllHouses } from "./utils/api";
+import Search from "./components/Search";
 
 function App() {
   const header = Header();
@@ -21,14 +22,18 @@ function App() {
         region: house.region,
       })
     );
-    Houses.innerHTML = "";
     Houses.append(...newHouses);
   }
-
+  const search = Search({
+    onchange: (value) => {
+      Houses.innerHTML = "";
+      getHouses(value);
+    },
+  });
   getHouses();
 
   const container = createElement("div", {
-    children: [header, main],
+    children: [header, search, main],
   });
 
   return container;
