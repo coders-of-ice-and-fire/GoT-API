@@ -4,7 +4,7 @@ import { createElement } from "../utils/elements";
 function createHouseCard({ name, quote, region }) {
   const houseTitle = createElement("h3", {
     className: "house__title",
-    innerText: "HOUSE: " + name,
+    innerText: name,
   });
 
   const houseQuote = createElement("blockquote", {
