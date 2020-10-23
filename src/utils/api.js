@@ -1,8 +1,7 @@
-export async function getAllHouses(name) {
-  let url = `https://www.anapioficeandfire.com/api/houses/`;
+export async function getAllHouses(name, page = 1) {
+  let url = `https://www.anapioficeandfire.com/api/houses/?page=${page}`;
   if (name) {
-    url += `?name=${name}`;
-    console.log(url);
+    url += `&name=${name}`;
   }
   const response = await fetch(url);
   const data = await response.json();

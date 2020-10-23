@@ -4,8 +4,11 @@ import { createElement } from "./utils/elements";
 import createHouseCard from "./components/House";
 import { getAllHouses } from "./utils/api";
 import Search from "./components/Search";
+import Button from "./components/Button";
 
 function App() {
+  let nextPage = null;
+  let lastHouse = null;
   const header = Header();
 
   const Houses = createElement("div");
@@ -13,8 +16,15 @@ function App() {
   const main = createElement("main", {
     children: [Houses],
   });
-  async function getHouses(name) {
-    const allHouses = await getAllHouses(name);
+  const loadMoreButton = Button({
+    innerText: "More Houses are coming",
+    onclick: () => {
+      getHouses(lastHouse, nextPage);
+    },
+  });
+
+  async function getHouses(name, page) {
+    const allHouses = await getAllHouses(name, page);
     const newHouses = allHouses.map((house) =>
       createHouseCard({
         name: house.name,
@@ -23,6 +33,9 @@ function App() {
       })
     );
     Houses.append(...newHouses);
+    nextPage = allHouses.next?.match(/\d+/)[0];
+    loadMoreButton.disabled = !allHouses.next;
+    lastHouse = name;
   }
   const search = Search({
     onchange: (value) => {
@@ -33,7 +46,7 @@ function App() {
   getHouses();
 
   const container = createElement("div", {
-    children: [header, search, main],
+    children: [header, search, main, loadMoreButton],
   });
 
   return container;
