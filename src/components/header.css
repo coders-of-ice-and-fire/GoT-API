@@ -1,8 +1,4 @@
 .header {
-  height: 64px;
-  display: flex;
-}
-
-.header > img {
-  height: 50px;
+  background-color: #2a2a2a;
+  text-align: center;
 }
