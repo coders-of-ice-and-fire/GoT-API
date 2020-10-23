@@ -1,27 +1,26 @@
 import "./house.css";
 import { createElement } from "../utils/elements";
 
-function createHouseCard() {
+function createHouseCard({ name, quote, region }) {
   const houseTitle = createElement("h3", {
     className: "house__title",
-    innerText: "HOUSE: blabla",
+    innerText: "HOUSE: " + name,
   });
 
   const houseQuote = createElement("blockquote", {
     className: "house__quote",
-    innerText: "a quote here",
+    innerText: quote,
   });
 
   const houseInfo = createElement("div", {
     className: "house__info",
     children: [
       createElement("p", {
-        innerText: "Region: anywehere",
+        innerText: "Region: " + region,
       }),
     ],
   });
-  const houseContainer = createElement("div", {
-    //evtl article einsetzen
+  const houseContainer = createElement("article", {
     className: "house__container",
     children: [houseTitle, houseQuote, houseInfo],
   });
