@@ -1,25 +1,21 @@
 import "./app.css";
-import Button from "./components/Button";
 import Header from "./components/Header";
-import { createElement, styled } from "./utils/elements";
-
-const PrimaryButton = styled(Button, "bg-primary");
+import { createElement } from "./utils/elements";
+import createHouseCard from "./components/House";
 
 function App() {
   const header = Header();
 
+  const houseCard = createHouseCard();
+
   const main = createElement("main", {
-    innerText: "👋",
+    children: [houseCard],
   });
 
   const container = createElement("div", {
-    children: [
-      header,
-      main,
-      Button({ innerText: "Hello" }),
-      PrimaryButton({ innerText: "World" }),
-    ],
+    children: [header, main],
   });
+
   return container;
 }
 

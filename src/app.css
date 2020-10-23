@@ -24,7 +24,7 @@
 }
 
 :root {
-  --bg-primary: rgb(48, 118, 209);
+  --bg-primary: white;
   --main-font: "GameofThrones";
 }
 
@@ -35,7 +35,7 @@ html {
 
 body {
   margin: 0;
-  background: rgb(18, 27, 27);
+  background: var(--bg-primary);
 }
 
 .bg-primary {
