@@ -7,10 +7,14 @@ function Header() {
     src: headerSrc,
     alt: "Header",
   });
+  const link = createElement("a", {
+    children: [logo],
+    onclick: () => window.location.reload(),
+  });
 
   const header = createElement("header", {
     className: "header",
-    children: [logo],
+    children: [link],
   });
   return header;
 }

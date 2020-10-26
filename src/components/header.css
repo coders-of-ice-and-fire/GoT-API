@@ -3,6 +3,9 @@
   text-align: center;
 }
 
-.header > img {
+.header > a > img {
   width: 100vw;
+}
+.header > a {
+  cursor: pointer;
 }

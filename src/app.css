@@ -41,3 +41,12 @@ body {
 .bg-primary {
   background: var(--bg-primary);
 }
+
+.main {
+  text-align: center;
+}
+.loadMore {
+  padding: 20px;
+  margin-bottom: 20px;
+  font-family: var(--main-font);
+}

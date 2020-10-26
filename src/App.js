@@ -12,15 +12,17 @@ function App() {
   const header = Header();
 
   const Houses = createElement("div");
-
-  const main = createElement("main", {
-    children: [Houses],
-  });
   const loadMoreButton = Button({
+    className: "loadMore",
     innerText: "More Houses are coming",
     onclick: () => {
       getHouses(lastHouse, nextPage);
     },
+  });
+
+  const main = createElement("main", {
+    className: "main",
+    children: [Houses, loadMoreButton],
   });
 
   async function getHouses(name, page) {
@@ -46,7 +48,7 @@ function App() {
   getHouses(null, 1);
 
   const container = createElement("div", {
-    children: [header, search, main, loadMoreButton],
+    children: [header, search, main],
   });
 
   return container;
