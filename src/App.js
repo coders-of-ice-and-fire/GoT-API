@@ -33,17 +33,17 @@ function App() {
       })
     );
     Houses.append(...newHouses);
-    nextPage = allHouses.next?.match(/\d+/)[0];
-    loadMoreButton.disabled = !allHouses.next;
+    nextPage = page + 1;
+
     lastHouse = name;
   }
   const search = Search({
     onchange: (value) => {
       Houses.innerHTML = "";
-      getHouses(value);
+      getHouses(value, 1);
     },
   });
-  getHouses();
+  getHouses(null, 1);
 
   const container = createElement("div", {
     children: [header, search, main, loadMoreButton],
